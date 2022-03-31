@@ -1,0 +1,17 @@
+<h2>Places you have visited</h2>
+
+{% if visited %} <!-- creates an if statement block which loops over the list of visited places and displays to the user -->
+
+<ul>
+    {% for place in visited %}
+        <li>{{place.name}}</li>
+    {% endfor %}
+</ul>
+
+{% else %}
+
+<p>You have not visited any places yet.</p> <!-- displays if there are no visited places -->
+
+{% endif %}
+
+<a href="{% url 'place_list' %}">Your wishlist</a> <!-- link that directs to another page, place_list -->
