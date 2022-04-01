@@ -20,16 +20,15 @@ def place_list(request):
 
 def about(request):
     author = 'Wyatt'
-    about = 'A website to create a list of places to visit'
+    about = 'A website to create a list of places to visit' # creates basic information about the author and website
     return render(request, 'travel_wishlist/about.html', {'author': author, 'about': about})
 
 def places_visited(request):
-    visited = Place.objects.filter(visited=True)
+    visited = Place.objects.filter(visited=True) # filters information to only include places that were visited
     return render(request, 'travel_wishlist/visited.html', {'visited': visited})
 
-def place_was_visited(request, place_pk):
+def place_was_visited(request, place_pk): # this method saves place that are marked as visited
     if request.method == 'POST':
-        #place = Place.objects.get(pk=place_pk)
         place = get_object_or_404(Place, pk=place_pk)
         place.visited = True
         place.save()

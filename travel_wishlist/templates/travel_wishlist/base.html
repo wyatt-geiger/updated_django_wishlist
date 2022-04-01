@@ -1,0 +1,30 @@
+<!-- This HTML file acts as the homepage for the program  -->
+
+<!-- this line allows static files to be loaded on to this HTML files. this is useful for loading CSS files -->
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Travel Wishlist</title>
+        <!-- imports CSS stylesheet from the internet -->
+        <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">
+        <!-- imports CSS stylesheet from the static folder of the project -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    </head>
+
+    <h1>Where do you want to go?</h1>
+
+    <body>
+        {% block content %}
+        {% endblock %}
+    </body>
+
+    <div>
+        <p>A travel wishlist, built with Django</p>
+        
+        <a href="{% url 'place_list' %}">Your wishlist</a> <!-- link that directs to another page, place_list -->
+        <a href="{% url 'places_visited' %}">Places you've visited</a> <!-- link that directs to another page, places_visited -->
+    </div>
+
+</html>

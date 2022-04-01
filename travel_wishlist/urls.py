@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+# Creates URL paths which load various different HTML files in the project
 urlpatterns = [
     path('', views.place_list, name='place_list'),
     path('about', views.about, name='about'),

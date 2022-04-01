@@ -1,29 +1,35 @@
+{% extends 'travel_wishlist/base.html' %} <!-- imports things from base.html such as the stylesheets -->
+{% block content %}
+
 <h2>Travel Wishlist</h2>
 
+<!-- POST method allows webpages to be updated after being loaded. here, it is used to update the wishlist on the page -->
 <form method="POST" action="{% url 'place_list' %}">
     {% csrf_token %}
     {{ new_place_form }}
-    <button type="submit">Add New Place</button>
+    <button id="add-new-place" type="submit">Add New Place</button>
 </form>
 
 
-
+<!-- This block of code creates a Visited! button next to each place on the wishlist, and sends that information to the 
+visited.html file which loads a list of visited places -->
 {% for place in places %}
 
-<div>
-    {{ place.name }}
+<div class="wishlist-place">
+    <span class="place-name">{{ place.name }}</span>
 
-    <form method="POST" action="{% url 'place_was_visited' place.pk %}">
+    <form class="visited-form" method="POST" action="{% url 'place_was_visited' place.pk %}">
         {% csrf_token %}
         <button>Visited!</button>
     </form>
     
 </div>
 
+<!-- displays a message if there are no places in the wishlist -->
 {% empty %}
 
 <p>You have no places in your wishlist.</p>
 
 {% endfor %}
 
-<a href="{% url 'places_visited' %}">Places you've visited</a>
+{% endblock %}

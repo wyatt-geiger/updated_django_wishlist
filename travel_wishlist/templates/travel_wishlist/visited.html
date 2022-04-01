@@ -1,8 +1,12 @@
+{% extends 'travel_wishlist/base.html' %} <!-- imports things from base.html such as the stylesheets -->
+{% block content %}
+
 <h2>Places you have visited</h2>
 
 {% if visited %} <!-- creates an if statement block which loops over the list of visited places and displays to the user -->
 
 <ul>
+    <!-- creates a list of places visited -->
     {% for place in visited %}
         <li>{{place.name}}</li>
     {% endfor %}
@@ -13,5 +17,4 @@
 <p>You have not visited any places yet.</p> <!-- displays if there are no visited places -->
 
 {% endif %}
-
-<a href="{% url 'place_list' %}">Your wishlist</a> <!-- link that directs to another page, place_list -->
+{% endblock %}
