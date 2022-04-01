@@ -27,7 +27,7 @@ def places_visited(request):
     visited = Place.objects.filter(visited=True) # filters information to only include places that were visited
     return render(request, 'travel_wishlist/visited.html', {'visited': visited})
 
-def place_was_visited(request, place_pk): # this method saves place that are marked as visited
+def place_was_visited(request, place_pk): # this method saves places that are marked as visited
     if request.method == 'POST':
         place = get_object_or_404(Place, pk=place_pk)
         place.visited = True

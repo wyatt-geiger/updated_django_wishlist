@@ -16,11 +16,12 @@ visited.html file which loads a list of visited places -->
 {% for place in places %}
 
 <div class="wishlist-place">
-    <span class="place-name">{{ place.name }}</span>
+    <span id="place-name-{{ place.pk }}" class="place-name">{{ place.name }}</span>
+    <!-- place-name-{{ place.pk }} is added so that we may run functional tests with selenium -->
 
     <form class="visited-form" method="POST" action="{% url 'place_was_visited' place.pk %}">
         {% csrf_token %}
-        <button>Visited!</button>
+        <button id="visited-button-{{ place.pk }}">Visited!</button>
     </form>
     
 </div>
