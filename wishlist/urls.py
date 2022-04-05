@@ -20,3 +20,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('travel_wishlist.urls'))
 ]
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+# this code allows images to be placed on to page by adding it to the urlpatterns list
+# without this, images would only appear broken on the page
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
